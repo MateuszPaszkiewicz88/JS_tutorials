@@ -1,0 +1,1 @@
+alert("WItam w Ninja Quiz!");
