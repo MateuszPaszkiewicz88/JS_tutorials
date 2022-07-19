@@ -6,15 +6,27 @@ const quiz = [
     ["Jak na imię miał Batman?","Bruce Wayne"]
 ]
 
-let score = 0;
+function start(quiz){
+    let score = 0;
+    for (const[question,answer] of quiz){
+        const response = ask(question);
+        check(response,answer);
+    }
+gameOver();
 
-for (const[question, answer] of quiz){
-    const response = prompt(question);
-    if (response === answer){
+function ask(question){
+    return prompt(question);
+}
+function check(response,answer){
+    if(response===answer){
         alert("Prawidłowa odpowiedź!");
-        score++
+        score++;
     }else{
-        alert(`Niestety, prawidłowa odpowiedź to ${answer}`)
+        alert(`Źle. Prawidłowa odpowiedź to ${answer}`)
     }
 }
-alert(`Zdobyłeś łącznie ${score} punktów.`)
+function gameOver(){
+    alert(`Koniec gry. Uzyskany wynik to: ${score}`)
+}
+}
+start(quiz);
