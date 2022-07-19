@@ -8,13 +8,13 @@ const quiz = [
 
 let score = 0;
 
-for (const[question, answear] of quiz){
+for (const[question, answer] of quiz){
     const response = prompt(question);
-    if (response === answear){
+    if (response === answer){
         alert("Prawidłowa odpowiedź!");
         score++
     }else{
-        alert(`Niestety, prawidłowa odpowiedź to ${answear}`)
+        alert(`Niestety, prawidłowa odpowiedź to ${answer}`)
     }
 }
 alert(`Zdobyłeś łącznie ${score} punktów.`)
