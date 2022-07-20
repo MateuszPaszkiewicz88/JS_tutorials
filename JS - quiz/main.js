@@ -1,6 +1,7 @@
 const view = {
   score: document.querySelector("#score strong"),
   question: document.getElementById("question"),
+  start: document.getElementById("start"),
   result: document.getElementById("result"),
   info: document.getElementById("info"),
   render(target,content,attributes){
@@ -8,10 +9,15 @@ const view = {
       target.setAttribute(key,attributes[key]);
     }
     target.innerHTML = content;
-  }
+  },
+  show(element){
+    element.style.display = 'block';
+    },
+    hide(element){
+    element.style.display = 'none';
+    },
 };
 
-alert("WItam w Ninja Quiz!");
 const quiz = [
   { name: "Superman", realName: "Clark Kent" },
   { name: "Wonder Woman", realName: "Diana Prince" },
@@ -20,8 +26,10 @@ const quiz = [
 
 const game = {
   start(quiz) {
+    view.hide(view.start);
     this.questions = [...quiz];
     this.score = 0;
+    
 
     for (const question of this.questions) {
       this.question = question;
@@ -50,8 +58,10 @@ const game = {
     }
   },
 
-  gameOver() {
-    view.render(view.info,`Koniec gry. Uzyskany wynik to: ${this.score}`)
+  gameOver(){
+    view.render(view.info,`Koniec gry. Uzyskany wynik to: ${this.score}`);
+    view.show(view.start);
   },
 };
-game.start(quiz);
+
+view.start.addEventListener("click",()=>game.start(quiz),false);
