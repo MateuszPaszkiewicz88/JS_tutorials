@@ -1,3 +1,16 @@
+const view = {
+  score: document.querySelector('#score strong'),
+  question: document.getElementById('question'),
+  result: document.getElementById('result'),
+  info: document.getElementById('info'),
+  render(target,content,attributes){
+    for(const key in attributes){
+      target.setAttribute(key,attributes[key]);
+    }
+    target.innerHtml = content;
+  }
+};
+
 alert("WItam w Ninja Quiz!");
 const quiz = [
   { name: "Superman", realName: "Clark Kent" },
